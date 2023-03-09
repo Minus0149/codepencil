@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+
+.top-pane {
+  background-color: slategrey;
+}
+
+.pane {
+  height: 50vh;
+  display: flex;
+}
+
+.editor-container {
+  flex-grow: 1;
+}
