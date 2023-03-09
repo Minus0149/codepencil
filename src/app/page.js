@@ -2,7 +2,7 @@
 
 import { Inter } from 'next/font/google';
 import Editor from './Editor';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -10,6 +10,21 @@ export default function Home() {
   const [html, setHtml] = useState('');
   const [css, setCss] = useState('');
   const [js, setJs] = useState('');
+  const [srcDoc, setSrcDoc] = useState('');
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setSrcDoc(`
+      <html>
+        <body>${html}</body>
+        <styles>${css}</styles>
+        <script>${js}</script>
+      </html>
+      `);
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, [html, css, js]);
+
   return (
     <main>
       <div className={`pane top-pane ${inter.className}`}>
@@ -34,6 +49,7 @@ export default function Home() {
       </div>
       <div className="pane">
         <iframe
+          srcDoc={srcDoc}
           tytle="output"
           sandbox="allow-scripts"
           frameBorder="0"
