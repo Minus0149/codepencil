@@ -3,13 +3,14 @@
 import { Inter } from 'next/font/google';
 import Editor from './Editor';
 import { useEffect, useState } from 'react';
+import useLocalStorage from './useLocalStorage';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
-  const [html, setHtml] = useState('');
-  const [css, setCss] = useState('');
-  const [js, setJs] = useState('');
+  const [html, setHtml] = useLocalStorage('html', '');
+  const [css, setCss] = useLocalStorage('css', '');
+  const [js, setJs] = useLocalStorage('js', '');
   const [srcDoc, setSrcDoc] = useState('');
 
   useEffect(() => {
