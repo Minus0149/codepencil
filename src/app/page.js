@@ -12,7 +12,7 @@ export default function Home() {
   const [js, setJs] = useState('');
   return (
     <main>
-      <div className="pane top-pane">
+      <div className={`pane top-pane ${inter.className}`}>
         <Editor
           language="xml"
           displayName="HTML"
